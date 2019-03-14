@@ -22,27 +22,30 @@ namespace PiDarts
             List<Thread> threadList = new List<Thread>(answer2);
             List<FindPiThread> findPiList = new List<FindPiThread>(answer2);
 
-            foreach (Thread myThread in threadList)
+            for (int i = 0; i <= answer2; i++)
             {
                 FindPiThread findPiThread = new FindPiThread(answer);
                 findPiList.Add(findPiThread);
-                new Thread(new ThreadStart(findPiThread.throwDarts));
-                //Thread myThread = new Thread(findPiThread.throwDarts);
+                Thread myThread;
+                myThread = new Thread(new ThreadStart(findPiThread.throwDarts));
                 threadList.Add(myThread);
                 myThread.Start();
                 Thread.Sleep(16);
             }
 
-            foreach (FindPiThread item in findPiList)
-            {
-                item = item.Join();
-            }
-
             foreach (Thread item in threadList)
             {
-                FindPiThread findPiThread = new FindPiThread(answer2);
-                int inside = findPiThread.DartsInside;
+                item.Join();
             }
+            foreach (FindPiThread item in findPiList)
+            {
+                FindPiThread findPiThread = new FindPiThread(answer);
+                int darts = findPiThread.DartsInside;
+            }
+
+            double estimation = darts / answer * 4;
+            Console.WriteLine("The pi estimation is: ");
+            Console.WriteLine(estimation);
 
             Console.ReadKey();
         }

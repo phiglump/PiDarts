@@ -9,17 +9,30 @@ using System.Threading.Tasks;
 
 namespace PiDarts
 {
-    class FindPiThread
+    public class FindPiThread
     {
         int dartsToThrow = 0;
-        public int DartsInside { get; set; } = 0;
+        int dartsInside = 0;
         Random newRandom;
 
         public FindPiThread(int d)
         {
-            d = dartsToThrow;
+            dartsToThrow = d;
             newRandom = new Random();
         }
+
+        public int DartsInside
+        {
+            get
+            {
+                return dartsInside;
+            }
+            set
+            {
+                dartsInside = value;
+            }
+        }
+
         public void throwDarts()
         {
             for (int i = 0; i <= dartsToThrow; i++)
@@ -31,7 +44,7 @@ namespace PiDarts
 
                 if (z <= 1)
                 {
-                    DartsInside++;
+                    dartsInside++;
                 }
             }
         }
