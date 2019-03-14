@@ -40,7 +40,7 @@ namespace PiDarts
         //if it is inside then it is added to the darts inside tally
         public void throwDarts()
         {
-            for (int i = 0; i <= dartsToThrow; i++)
+            for (int i = 1; i <= dartsToThrow; i++)
             {
                 double x = newRandom.NextDouble();
                 double y = newRandom.NextDouble();

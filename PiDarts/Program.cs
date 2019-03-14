@@ -58,7 +58,10 @@ namespace PiDarts
                     Console.WriteLine(estimation);
                 }
             }
-
+            //In doing some small experiments i have noticed that the higher the dart amount
+            //The much closer the estimation is to pi
+            //It also tends to be a lot slower when the thread count is high.
+            //High thread count but low darts tends to have a poor accuracy
             Console.ReadKey();
         }
     }
